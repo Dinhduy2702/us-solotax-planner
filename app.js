@@ -447,7 +447,8 @@
 
     const ecoBtns = [
       `<a class="btn btn-sm" href="${CONFIG.ecosystem.smartMoneyUrl}" target="_blank" rel="noopener noreferrer">SmartMoney US</a>`,
-      `<a class="btn btn-sm" href="${CONFIG.ecosystem.debtFreeUrl}" target="_blank" rel="noopener noreferrer">DebtFree US</a>`
+      `<a class="btn btn-sm" href="${CONFIG.ecosystem.debtFreeUrl}" target="_blank" rel="noopener noreferrer">DebtFree US</a>`,
+      `<a class="btn btn-sm" href="${CONFIG.ecosystem.propYieldUrl}" target="_blank" rel="noopener noreferrer">PropYield US</a>`
     ];
     if (hasYtUrl) ecoBtns.push(`<a class="btn btn-sm" href="${ytOffer.url}" target="_blank" rel="noopener noreferrer">${ytOffer.label}</a>`);
     if (hasSheetUrl) {
