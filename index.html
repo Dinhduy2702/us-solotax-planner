@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoloTax US: 2026 LLC vs. S-Corp Tax Savings, Solo 401(k) &amp; Freelance Rate Calculator</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230F766E'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='34' fill='%23FFFFFF'%3ES%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Free 2026 US solopreneur tax calculators: LLC vs. S-Corp real net savings after payroll &amp; CPA overhead, Solo 401(k) vs. SEP-IRA max contribution (Schedule C vs. S-Corp W-2), and Freelance Hourly Rate reverse calculator.">
+  <meta property="og:title" content="SoloTax US: 2026 LLC vs. S-Corp &amp; Solo 401(k) Planner">
+  <meta property="og:description" content="Calculate real S-Corp tax savings after overhead, max 2026 Solo 401(k) deductions, and your true freelance hourly rate.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand-link" href="#scorp">
+        <span class="brand-badge" aria-hidden="true">S</span>
+        <span style="min-width:0;">
+          <span class="brand-title" id="brandNameText">SoloTax US</span>
+          <span class="brand-sub" id="brandSubText">2026 LLC vs. S-Corp &amp; Solo 401(k) Planner</span>
+        </span>
+      </a>
+
+      <div class="header-meta">
+        <a class="btn btn-sm hide-xs" href="https://dinhduy2702.github.io/us-smart-money-calculators/" target="_blank" rel="noopener noreferrer">SmartMoney US</a>
+        <a class="btn btn-sm hide-xs" href="https://dinhduy2702.github.io/us-debt-free-planner/" target="_blank" rel="noopener noreferrer">DebtFree US</a>
+        <button type="button" class="btn btn-sm" id="themeToggleBtn" aria-label="Switch color theme">Dark Mode</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="tool-nav-wrap">
+    <div class="container">
+      <nav class="tool-nav" role="tablist" aria-label="Solopreneur tax calculators">
+        <button type="button" class="tool-tab" role="tab" id="tab-scorp" aria-controls="panel-scorp" aria-selected="true" data-tool="scorp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          LLC vs. S-Corp
+        </button>
+        <button type="button" class="tool-tab" role="tab" id="tab-solo401k" aria-controls="panel-solo401k" aria-selected="false" data-tool="solo401k">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          Solo 401(k) vs. SEP-IRA
+        </button>
+        <button type="button" class="tool-tab" role="tab" id="tab-rate" aria-controls="panel-rate" aria-selected="false" data-tool="rate">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Freelance Rate Reverse
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="page-intro">
+      <div>
+        <h1 class="page-title" id="activeToolHeading">2026 LLC vs. S-Corp Real Tax Savings Optimizer</h1>
+        <p class="page-desc" id="activeToolDesc">
+          Compare standard LLC (Sole Prop) self-employment tax against an S-Corp election after real payroll, CPA 1120-S, and state compliance overhead.
+        </p>
+      </div>
+      <div class="intro-actions">
+        <button type="button" class="btn btn-primary btn-sm" id="shareLinkBtn">Share<span class="hide-xs"> Link</span></button>
+        <button type="button" class="btn btn-sm" id="copyScenarioBtn">Copy<span class="hide-xs"> Summary</span></button>
+        <button type="button" class="btn btn-sm" id="printReportBtn">Print<span class="hide-xs"> / PDF</span></button>
+        <button type="button" class="btn btn-sm" id="resetDefaultsBtn">Reset</button>
+      </div>
+    </section>
+
+    <section class="presets-bar" aria-label="Quick example scenarios">
+      <span class="presets-label">Try a scenario:</span>
+      <div class="presets-chips" id="quickPresetsRow"></div>
+    </section>
+
+    <!-- TAB 1: LLC VS S-CORP OPTIMIZER -->
+    <section class="calc-panel" id="panel-scorp" role="tabpanel" aria-labelledby="tab-scorp">
+      <div class="calc-grid">
+        <div class="card">
+          <h2 class="card-heading">Business Profit &amp; S-Corp Overhead</h2>
+          <p class="card-sub">Unlike generic calculators, we subtract real payroll and Form 1120-S CPA fees to show your true net savings.</p>
+
+          <div class="form-stack">
+            <div class="field">
+              <div class="field-head">
+                <label for="scProfit">Annual Net Business Profit ($)</label>
+                <span class="field-hint tabular" id="scProfitHint">$120,000 / yr</span>
+              </div>
+              <input class="input-box tabular" type="number" id="scProfit" min="10000" max="2000000" step="2500" value="120000">
+              <input class="range-slider" type="range" id="scProfitSlider" min="30000" max="400000" step="5000" value="120000" aria-label="Annual net business profit slider">
+            </div>
+
+            <div class="field">
+              <div class="field-head">
+                <label for="scSalaryPct">Reasonable W-2 Salary (% of Profit)</label>
+                <span class="field-hint tabular" id="scSalaryHint">45% ($54,000 W-2)</span>
+              </div>
+              <input class="input-box tabular" type="number" id="scSalaryPct" min="25" max="85" step="1" value="45">
+              <input class="range-slider" type="range" id="scSalarySlider" min="30" max="75" step="1" value="45" aria-label="Reasonable W-2 salary percentage slider">
+            </div>
+
+            <details class="advanced-details" open>
+              <summary>Annual S-Corp Compliance Overhead (Realistic US Costs)</summary>
+              <div class="advanced-inner">
+                <div class="field-row-3">
+                  <div class="field">
+                    <label for="scPayrollCost">Payroll Software ($/yr)</label>
+                    <input class="input-box tabular" type="number" id="scPayrollCost" min="0" max="5000" step="60" value="600">
+                  </div>
+                  <div class="field">
+                    <label for="scCpaCost">CPA Form 1120-S ($/yr)</label>
+                    <input class="input-box tabular" type="number" id="scCpaCost" min="0" max="10000" step="100" value="1500">
+                  </div>
+                  <div class="field">
+                    <label for="scStateFee">State S-Corp Fee ($/yr)</label>
+                    <input class="input-box tabular" type="number" id="scStateFee" min="0" max="5000" step="50" value="300">
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="card result-sticky" aria-live="polite">
+          <div class="hero-result-top">
+            <div>
+              <span class="result-label">True Net Annual S-Corp Savings (After Overhead)</span>
+              <span class="result-big tabular" id="scNetSavings">$0</span>
+              <div class="result-subline tabular" id="scVerdictSub">Gross SE tax cut minus $0 overhead</div>
+            </div>
+            <span class="status-pill pass" id="scVerdictBadge">Worth Switching</span>
+          </div>
+
+          <div class="kpi-strip-4">
+            <div class="kpi-mini">
+              <span>LLC SE Tax</span>
+              <strong class="tabular" id="scLlcTax">$0</strong>
+            </div>
+            <div class="kpi-mini">
+              <span>S-Corp Payroll Tax</span>
+              <strong class="tabular" id="scCorpTax">$0</strong>
+            </div>
+            <div class="kpi-mini">
+              <span>K-1 Distribution</span>
+              <strong class="tabular" id="scK1Dist">$0</strong>
+            </div>
+            <div class="kpi-mini">
+              <span>Break-Even Profit</span>
+              <strong class="tabular" id="scBreakEven">$0</strong>
+            </div>
+          </div>
+
+          <div class="reverse-box">
+            <div class="reverse-head">
+              <div>
+                <strong>Reverse Check: Profit Needed for Your Target S-Corp Savings</strong>
+                <span class="reverse-sub">Enter the minimum net annual savings that makes S-Corp paperwork worth it to you.</span>
+              </div>
+              <button type="button" class="btn btn-sm" id="scApplyReverseBtn">Test That Profit</button>
+            </div>
+            <div class="field-row-2" style="margin-top:0.65rem;">
+              <div class="field">
+                <label for="scTargetNet">Desired Net Savings ($ / yr)</label>
+                <input class="input-box tabular" type="number" id="scTargetNet" min="500" max="25000" step="500" value="4000">
+              </div>
+              <div class="field">
+                <label>Required Annual Profit</label>
+                <div class="reverse-readout tabular" id="scRequiredProfit">$0 / yr</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="insight-box" id="scInsightBox"></div>
+          <div class="bridge-box" id="scBridgeBox"></div>
+          <div class="result-cta-card" data-result-cta="scorp"></div>
+        </div>
+      </div>
+
+      <div class="card deep-section">
+        <div class="deep-head">
+          <div>
+            <h2 class="card-heading">Side-by-Side Tax Comparison: Standard LLC vs. S-Corp</h2>
+            <p class="card-sub" style="margin-bottom:0;">See exactly how self-employment tax, payroll tax, and compliance overhead compare across profit tiers.</p>
+          </div>
+          <button type="button" class="btn btn-sm" id="scExportCsvBtn">Export CSV</button>
+        </div>
+        <div class="table-scroll">
+          <table class="schedule-table" aria-label="LLC vs S-Corp profit tier comparison">
+            <thead>
+              <tr>
+                <th>Annual Net Profit</th>
+                <th>LLC SE Tax (15.3%)</th>
+                <th>S-Corp FICA + Overhead</th>
+                <th>True Net Savings</th>
+                <th>Recommendation</th>
+              </tr>
+            </thead>
+            <tbody id="scTierTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: SOLO 401(K) VS SEP-IRA MAX -->
+    <section class="calc-panel" id="panel-solo401k" role="tabpanel" aria-labelledby="tab-solo401k" hidden>
+      <div class="calc-grid">
+        <div class="card">
+          <h2 class="card-heading">2026 Retirement Shelter Inputs</h2>
+          <p class="card-sub">Follows exact 2026 IRS rules separating Sole Prop (Schedule C) vs. S-Corp (W-2 Box 1 wages).</p>
+
+          <div class="form-stack">
+            <div class="field-row-2">
+              <div class="field">
+                <label for="s4Entity">Business Tax Structure</label>
+                <select class="select-box" id="s4Entity">
+                  <option value="soleprop">Sole Prop / Single-Member LLC</option>
+                  <option value="scorp">S-Corporation (W-2 Wages Only)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="s4Age">Your Age Group (2026)</label>
+                <select class="select-box" id="s4Age">
+                  <option value="under50">Under 50 ($23,500 deferral cap)</option>
+                  <option value="50plus">Age 50–59 (+$7,500 catch-up)</option>
+                  <option value="60to63">Age 60–63 (+$11,250 super catch-up)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="field-head">
+                <label for="s4Income" id="s4IncomeLabel">Schedule C Net Profit ($)</label>
+                <span class="field-hint tabular" id="s4IncomeHint">$110,000 / yr</span>
+              </div>
+              <input class="input-box tabular" type="number" id="s4Income" min="5000" max="1000000" step="2500" value="110000">
+              <input class="range-slider" type="range" id="s4IncomeSlider" min="20000" max="350000" step="5000" value="110000" aria-label="Eligible retirement income slider">
+            </div>
+
+            <div class="field-row-2">
+              <div class="field">
+                <label for="s4TaxBracket">Est. Combined Tax Bracket (%)</label>
+                <input class="input-box tabular" type="number" id="s4TaxBracket" min="10" max="50" step="1" value="28">
+              </div>
+              <div class="field">
+                <label for="s4Other401k">Day-Job W-2 401(k) Already Used ($)</label>
+                <input class="input-box tabular" type="number" id="s4Other401k" min="0" max="34750" step="500" value="0">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card result-sticky" aria-live="polite">
+          <div class="hero-result-top">
+            <div>
+              <span class="result-label">Max 2026 Solo 401(k) Contribution</span>
+              <span class="result-big tabular" id="s4MaxSolo">$0</span>
+              <div class="result-subline tabular" id="s4TaxSavedSub">Immediate 2026 tax bill cut: $0</div>
+            </div>
+            <span class="status-pill pass" id="s4AdvantageBadge">+$0 More Than SEP-IRA</span>
+          </div>
+
+          <div class="kpi-strip-3">
+            <div class="kpi-mini">
+              <span>Employee Deferral</span>
+              <strong class="tabular" id="s4EmployeePart">$0</strong>
+            </div>
+            <div class="kpi-mini">
+              <span>Employer Profit-Share</span>
+              <strong class="tabular" id="s4EmployerPart">$0</strong>
+            </div>
+            <div class="kpi-mini">
+              <span>SEP-IRA Max Limit</span>
+              <strong class="tabular" id="s4SepMax">$0</strong>
+            </div>
+          </div>
+
+          <div class="chart-wrap">
+            <div class="compare-bars" id="s4CompareBars"></div>
+          </div>
+
+          <div class="insight-box" id="s4InsightBox"></div>
+          <div class="result-cta-card" data-result-cta="solo401k"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: FREELANCE HOURLY RATE REVERSE CALCULATOR -->
+    <section class="calc-panel" id="panel-rate" role="tabpanel" aria-labelledby="tab-rate" hidden>
+      <div class="calc-grid">
+        <div class="card">
+          <h2 class="card-heading">Target Lifestyle &amp; Billable Reality</h2>
+          <p class="card-sub">Reverse-calculate your minimum hourly rate so you actually take home your target W-2 equivalent after SE taxes and unpaid admin time.</p>
+
+          <div class="form-stack">
+            <div class="field">
+              <div class="field-head">
+                <label for="rtTargetW2">Target W-2 Equivalent Income ($ / yr)</label>
+                <span class="field-hint tabular" id="rtTargetHint">$100,000 / yr</span>
+              </div>
+              <input class="input-box tabular" type="number" id="rtTargetW2" min="20000" max="1000000" step="2500" value="100000">
+              <input class="range-slider" type="range" id="rtTargetSlider" min="40000" max="300000" step="5000" value="100000" aria-label="Target W-2 equivalent slider">
+            </div>
+
+            <div class="field-row-2">
+              <div class="field">
+                <label for="rtBillableHrs">Billable Hours / Week</label>
+                <input class="input-box tabular" type="number" id="rtBillableHrs" min="5" max="50" step="1" value="25">
+              </div>
+              <div class="field">
+                <label for="rtWeeksOff">Vacation + Sick + Holidays (Weeks)</label>
+                <input class="input-box tabular" type="number" id="rtWeeksOff" min="0" max="20" step="1" value="4">
+              </div>
+            </div>
+
+            <div class="field-row-3">
+              <div class="field">
+                <label for="rtHealth">Health Ins. ($/yr)</label>
+                <input class="input-box tabular" type="number" id="rtHealth" min="0" max="40000" step="500" value="7200">
+              </div>
+              <div class="field">
+                <label for="rtExpenses">Tools &amp; Overhead ($/yr)</label>
+                <input class="input-box tabular" type="number" id="rtExpenses" min="0" max="100000" step="500" value="6000">
+              </div>
+              <div class="field">
+                <label for="rtTaxBuffer">Extra SE Tax Buffer (%)</label>
+                <input class="input-box tabular" type="number" id="rtTaxBuffer" min="0" max="20" step="0.5" value="7.65">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card result-sticky" aria-live="polite">
+          <div class="hero-result-top">
+            <div>
+              <span class="result-label">Minimum Sustainable Hourly Rate</span>
+              <span class="result-big tabular" id="rtHourlyOut">$0/hr</span>
+              <div class="result-subline tabular" id="rtRevSub">Required annual gross revenue: $0</div>
+            </div>
+            <span class="status-pill pass tabular" id="rtBillableYearBadge">1,200 billable hrs/yr</span>
+          </div>
+
+          <div class="kpi-strip-3">
+            <div class="kpi-mini">
+              <span>Day Rate (7 hrs)</span>
+              <strong class="tabular" id="rtDayRate">$0/day</strong>
+            </div>
+            <div class="kpi-mini">
+              <span>Weekly Target</span>
+              <strong class="tabular" id="rtWeeklyRev">$0/wk</strong>
+            </div>
+            <div class="kpi-mini">
+              <span>vs. W-2 Hourly Eq.</span>
+              <strong class="tabular" id="rtW2Mult">0x</strong>
+            </div>
+          </div>
+
+          <table class="breakdown-table" style="margin-top:0.95rem;" aria-label="Annual revenue bridge breakdown">
+            <tbody id="rtBreakdownBody"></tbody>
+          </table>
+
+          <div class="insight-box" id="rtInsightBox"></div>
+          <div class="result-cta-card" data-result-cta="rate"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTEXTUAL NEXT STEPS (ACTIONABLE CHECKLISTS - ZERO COMING SOON) -->
+    <section class="offers-section" aria-label="Solopreneur tax playbooks">
+      <div class="offers-head">
+        <h2>Smart Next Steps to Cut Self-Employment Tax</h2>
+        <span style="font-size:0.8rem; color:var(--text-muted);">2026 US Solopreneur &amp; S-Corp Playbooks</span>
+      </div>
+      <div class="offers-grid" id="offersGrid"></div>
+
+      <div class="ecosystem-bar">
+        <div>
+          <strong>Complete Your 2026 US Financial Ecosystem</strong>
+          <div style="font-size:0.84rem; color:var(--text-secondary); margin-top:0.2rem;">
+            Jump to 50-state paycheck &amp; investing calculators, debt payoff planner, or preview the 2026 Freelancer 1099 Tax OS.
+          </div>
+        </div>
+        <div class="eco-links" id="ecoLinksContainer"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <strong>Educational Disclaimer:</strong> SoloTax US provides mathematical estimates using 2026 IRS self-employment tax rates, S-Corp payroll rules, and Solo 401(k) / SEP-IRA limits for informational purposes only. Reasonable W-2 compensation, state franchise taxes (such as CA $800 minimum), and QBI eligibility vary by individual situation. Consult a licensed CPA before filing IRS Form 2553.
+    </div>
+  </footer>
+
+  <dialog class="wealth-modal" id="freelanceOsModal" aria-labelledby="freelanceOsModalTitle">
+    <div class="wealth-modal-head">
+      <div>
+        <span class="offer-badge">2026 Google Sheets System</span>
+        <h2 id="freelanceOsModalTitle">US Freelancer 1099 Tax OS (Free Lite Preview)</h2>
+      </div>
+      <button type="button" class="btn btn-sm" id="closeModalBtn" aria-label="Close preview">Close</button>
+    </div>
+    <p class="wealth-modal-desc">
+      Built specifically for US freelancers, creators, and S-Corp owners to pair with SoloTax US — track every client invoice, business write-off, mileage log, and quarterly IRS 1040-ES reserve automatically.
+    </p>
+    <ul class="wealth-modal-list">
+      <li><strong>Income &amp; Expense Ledger (Schedule C Ready):</strong> Categorizes software, home office, and $0.70/mi mileage automatically.</li>
+      <li><strong>Quarterly IRS 1040-ES Tax Vault:</strong> Shows exact dollar amount to set aside for Apr 15, Jun 15, Sep 15, and Jan 15.</li>
+      <li><strong>S-Corp Break-Even Monitor:</strong> Alerts you the moment your YTD net profit crosses your S-Corp profitability threshold.</li>
+      <li><strong>Solo 401(k) Contribution Tracker:</strong> Tracks Employee vs. Employer buckets toward your 2026 IRS limit.</li>
+    </ul>
+    <div class="wealth-modal-actions">
+      <button type="button" class="btn btn-primary btn-sm" id="modalPrintBtn">Save Current Tax Plan (PDF)</button>
+      <button type="button" class="btn btn-sm" id="modalCloseFooterBtn">Back to Calculator</button>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toastBox" hidden role="status" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
