@@ -14,12 +14,12 @@ window.SOLOTAX_CONFIG = {
     propYieldUrl: "https://dinhduy2702.github.io/us-propyield-analyzer/",
     retireSmartUrl: "https://dinhduy2702.github.io/us-retiresmart-planner/",
     youtubeFinance: {
-      label: "Watch US Solopreneur Tax Guides",
-      url: "" // AGY 3 cap nhat link kenh YT Finance EN khi lap xong
+      label: "US Money & 1099 Bundle ($29 · Save $14)",
+      url: "https://897833387907.gumroad.com/l/us-money-1099-tax-bundle-2026"
     },
     gumroadFreelanceOs: {
-      label: "US Freelancer 1099 Tax OS (2026 Sheets)",
-      url: "" // AGY 5 cap nhat link Gumroad SP #4 (US Freelancer 1099 Tax OS) khi xong
+      label: "Get 1099 Tax OS ($0 Lite / $24 Full)",
+      url: "https://897833387907.gumroad.com/l/us-freelancer-1099-tax-pnl-os-2026"
     }
   },
   affiliates: [
@@ -58,18 +58,11 @@ window.SOLOTAX_CONFIG = {
     {
       id: "bookkeeping",
       context: ["scorp", "solo401k", "rate"],
-      badge: "Bookkeeping",
-      title: "1099 Expense Tracking & Quarterly IRS Safe-Harbor Tools",
-      summary: "Separate business write-offs (home office, software, $0.70/mi mileage) so you never overpay self-employment tax.",
-      ctaLabel: "Compare 1099 Bookkeeping Apps",
-      checklistTitle: "1099 Write-Off & Rate Playbook",
-      checklist: [
-        "Price hourly rates using realistic billable hours (22 to 28 hrs/week), not 40 hrs/week.",
-        "Bake 15.3% SE tax, health insurance, and 3 to 4 weeks of unpaid PTO into every client quote.",
-        "Pay IRS 1040-ES quarterly deadlines (Apr 15, Jun 15, Sep 15, Jan 15) via free IRS Direct Pay.",
-        "Auto-transfer 25% to 30% of every paid invoice into a dedicated High-Yield Tax Vault."
-      ],
-      url: "" // Dan link Affiliate QuickBooks Self-Employed / FreshBooks / Wave
+      badge: "BillSnap Pro · $15",
+      title: "BillSnap Pro — Local Freelance Timer & Auto 1099 Tax Vault",
+      summary: "Track billable client hours with a Live Toolbar Badge, auto-calculate 1099 quarterly tax vaults, and export 1-Click Client Invoice PDFs & Schedule C CSVs.",
+      ctaLabel: "Get BillSnap Pro ($15 Lifetime)",
+      url: "https://897833387907.gumroad.com/l/billsnap-freelance-pro"
     }
   ]
 };
