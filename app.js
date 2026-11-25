@@ -143,11 +143,26 @@
     return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
   }
 
+  const STATE_SCORP_FEES = {
+    CA: 1800, TX: 0, NY: 300, FL: 150, WA: 200,
+    NJ: 500, IL: 1800, MA: 456, VA: 100, CO: 50
+  };
+
   function applyUrlParams() {
     const params = new URLSearchParams(window.location.search);
+    if ([...params.keys()].length === 0) return null;
+
+    const stateParam = (params.get("state") || "").toUpperCase();
+    if (stateParam && Object.prototype.hasOwnProperty.call(STATE_SCORP_FEES, stateParam)) {
+      if ($("scStateFee")) $("scStateFee").value = STATE_SCORP_FEES[stateParam];
+    }
+    if (params.has("profit") && $("scProfit")) {
+      $("scProfit").value = params.get("profit");
+    }
+
     const tabParam = params.get("tab");
     const targetTab = TOOL_META[tabParam] ? tabParam : null;
-    if (!targetTab) return null;
+    if (!targetTab) return stateParam ? "scorp" : null;
     const map = URL_MAP[targetTab] || {};
     Object.entries(map).forEach(([k, id]) => {
       if (params.has(k) && $(id)) $(id).value = params.get(k);
