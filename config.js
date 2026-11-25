@@ -12,6 +12,7 @@ window.SOLOTAX_CONFIG = {
     smartMoneyUrl: "https://dinhduy2702.github.io/us-smart-money-calculators/",
     debtFreeUrl: "https://dinhduy2702.github.io/us-debt-free-planner/",
     propYieldUrl: "https://dinhduy2702.github.io/us-propyield-analyzer/",
+    retireSmartUrl: "https://dinhduy2702.github.io/us-retiresmart-planner/",
     youtubeFinance: {
       label: "Watch US Solopreneur Tax Guides",
       url: "" // AGY 3 cap nhat link kenh YT Finance EN khi lap xong
