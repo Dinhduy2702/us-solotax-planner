@@ -145,7 +145,9 @@
 
   const STATE_SCORP_FEES = {
     CA: 1800, TX: 0, NY: 300, FL: 150, WA: 200,
-    NJ: 500, IL: 1800, MA: 456, VA: 100, CO: 50
+    NJ: 500, IL: 1800, MA: 456, VA: 100, CO: 50,
+    GA: 50, NC: 200, PA: 50, OH: 0, AZ: 0,
+    MI: 25, TN: 1500, NV: 350, OR: 250, MD: 300
   };
 
   function applyUrlParams() {
