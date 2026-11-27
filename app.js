@@ -6,8 +6,8 @@
   const CONFIG = window.SOLOTAX_CONFIG;
 
   // 2026 IRS Thresholds
-  const SS_CAP_2026 = 176100;
-  const SOLO401K_EMP_CAP = 23500;
+  const SS_CAP_2026 = 184500;
+  const SOLO401K_EMP_CAP = 24500;
   const SOLO401K_TOTAL_CAP = 70000;
   const CATCHUP_50 = 7500;
   const CATCHUP_60_63 = 11250;
